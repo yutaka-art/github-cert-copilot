@@ -57,7 +57,7 @@ export default defineComponent({
 
     // CSV読み込み
     const loadQuestions = () => {
-      fetch('questions.csv')
+      fetch(import.meta.env.BASE_URL + 'questions.csv')
         .then((res) => res.text())
         .then((csv) => {
           const parsed = Papa.parse<Question>(csv, { header: true });
