@@ -1,4 +1,4 @@
-question,choices,answer,explanation
+﻿question,choices,answer,explanation
 GitHub Copilot はコード リファクタリング タスクをどのように支援しますか?,A.GitHub Copilot は、ユーザー入力なしで構文エラーを修正できます。;B.GitHub Copilot は、ベストプラクティスに従ってコードを自動的に書き換えることができます。;C.GitHub Copilot は、コード品質を向上させるためのリファクタリングの改善を提案できます。;D.GitHub Copilot はプロジェクト ディレクトリから不要なファイルを削除できます。,C,GitHub Copilotは既存のコードを分析し、コードの品質、可読性、保守性を向上させるためのリファクタリングの改善を提案します。
 GitHub Copilot Chat のパフォーマンスを向上させる戦略を選択します。,A.GitHub Copilot Chatクエリを1つ使用して、技術要件のコレクションの解決策を見つける;B.GitHub Copilot Chatに同時アクセスするユーザー数を制限する;C.より具体的にするために迅速なエンジニアリング技術を適用する;D.生成されたコード内でメモリを大量に消費する操作の使用を最適化する;,C,GitHub Copilotは既存のコードを分析し、コードの品質、可読性、保守性を向上させるためのリファクタリングの改善を提案します。コード構造の改善、複雑さの軽減、ベストプラクティスの遵守に向けた変更を提案します。
 GitHub Mobile で GitHub Copilot Chat を使用しているときに、GitHub Copilot Chat に関するフィードバックを共有する最適な方法は何ですか?,A.GitHub モバイル アプリの [設定] メニュー。;B.GitHub ウェブサイトのフィードバック セクション。;C.Copilot Chat インターフェースで絵文字を使用します。;D.GitHub の公式 X (旧称 Twitter) アカウントでツイートする。,C,GitHub Mobile でフィードバックを共有する最適な方法は、Copilot Chat インターフェースの絵文字を使用することです。これにより、直接かつ即時のフィードバックが可能になります。
