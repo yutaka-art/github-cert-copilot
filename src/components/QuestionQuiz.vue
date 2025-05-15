@@ -16,6 +16,10 @@
       </ul>
       <div v-if="!answered">
         <button :disabled="selectedKeys.length === 0" @click="submitAnswer">回答する</button>
+        <div class="nav-buttons">
+          <button @click="prevQuestion" :disabled="currentIndex === 0">戻る</button>
+          <button @click="goNextQuestion" :disabled="currentIndex === questions.length - 1">次へ</button>
+        </div>
       </div>
       <div v-else>
         <p :class="{ correct: isCorrect, incorrect: !isCorrect }">
@@ -27,6 +31,9 @@
     </div>
     <div v-else>
       <h2>全ての問題が終了しました</h2>
+      <div class="result">
+        <p>正答数: {{ correctCount }}/{{ questions.length }}　正答率: {{ correctRate }}%</p>
+      </div>
       <button @click="restartQuiz">最初からやり直す</button>
     </div>
   </div>
@@ -54,6 +61,8 @@ export default defineComponent({
     const isCorrect = ref(false);
     const selectedKeys = ref<ChoiceKey[]>([]);
     const choicesList = ref<{ key: ChoiceKey; text: string }[]>([]);
+    // 正答数カウント
+    const correctCount = ref(0);
 
     // CSV読み込み
     const loadQuestions = () => {
@@ -120,6 +129,7 @@ export default defineComponent({
       }).filter(Boolean).sort();
       const selectedSorted = [...selectedKeys.value].sort();
       isCorrect.value = JSON.stringify(selectedSorted) === JSON.stringify(answerKeys);
+      if (isCorrect.value) correctCount.value++;
     };
 
     // 正解の表示用（表示順アルファベットで）
@@ -162,12 +172,37 @@ export default defineComponent({
       currentIndex.value = 0;
       answered.value = false;
       selectedKeys.value = [];
+      correctCount.value = 0;
       questions.value = shuffleArray(questions.value);
       setChoicesList();
     };
 
     // 現在の問題
     const currentQuestion = computed(() => questions.value[currentIndex.value]);
+
+    // --- 追加: 戻る・次へ機能 ---
+    const prevQuestion = () => {
+      if (currentIndex.value > 0) {
+        currentIndex.value--;
+        answered.value = false;
+        selectedKeys.value = [];
+        setChoicesList();
+      }
+    };
+    const goNextQuestion = () => {
+      if (currentIndex.value < questions.value.length - 1) {
+        currentIndex.value++;
+        answered.value = false;
+        selectedKeys.value = [];
+        setChoicesList();
+      }
+    };
+
+    // 正答率
+    const correctRate = computed(() => {
+      if (questions.value.length === 0) return 0;
+      return Math.round((correctCount.value / questions.value.length) * 100);
+    });
 
     // 初期化
     loadQuestions();
@@ -185,6 +220,11 @@ export default defineComponent({
       restartQuiz,
       answerDisplay,
       explanationWithBr,
+      prevQuestion,
+      goNextQuestion,
+      questions,
+      correctCount,
+      correctRate,
     };
   },
 });
@@ -223,5 +263,14 @@ button.selected {
   background: #f8f8f8;
   padding: 1rem;
   border-radius: 4px;
+}
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.result {
+  margin-top: 1rem;
+  font-size: 1.2rem;
 }
 </style>
