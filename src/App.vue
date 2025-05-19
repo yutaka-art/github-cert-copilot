@@ -1,22 +1,11 @@
-<script setup>
-import QuestionQuiz from './components/QuestionQuiz.vue'
-</script>
-
 <template>
-  <QuestionQuiz />
+  <router-view />
 </template>
 
+<script setup>
+// ルーティングのみ
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+/* 既存のスタイルは不要なので削除 */
 </style>

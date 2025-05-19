@@ -70,7 +70,9 @@ export default defineComponent({
         .then((res) => res.text())
         .then((csv) => {
           const parsed = Papa.parse<Question>(csv, { header: true });
-          questions.value = shuffleArray(parsed.data.filter(q => q.question));
+          // 10問ランダム抽出
+          const all = shuffleArray(parsed.data.filter(q => q.question));
+          questions.value = all.slice(0, 10);
           setChoicesList();
         });
     };
