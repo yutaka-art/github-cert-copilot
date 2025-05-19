@@ -1,6 +1,6 @@
 {
   "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/favicon.ico", "/vite.svg"]
+    "rewrite": "/github-cert-copilot/index.html",
+    "exclude": ["/github-cert-copilot/assets/*", "/github-cert-copilot/favicon.ico", "/github-cert-copilot/vite.svg"]
   }
 }
